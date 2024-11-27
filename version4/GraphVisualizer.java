@@ -35,6 +35,12 @@ public class GraphVisualizer {
         public Double getY() { return y; }
     }
 
+
+    private static final double DEMOGRAPHIC_WEIGHT_SOURCE = 0.14;  
+    private static final double DEMOGRAPHIC_WEIGHT_TARGET = 0.27;  
+    
+
+
     // Edge class
     static class Edge {
         Node source, target;
@@ -60,10 +66,20 @@ public class GraphVisualizer {
         public Node getTarget() { return target; }
         public Double getDistance() { return distance; }
 
+       //----------------------------------------------------------------------
+
         public Double getCompositeWeight() {
-            return distance + populationDensitySource + economicWealthSource + tourismPotentialSource +
-                    populationDensityTarget + economicWealthTarget + tourismPotentialTarget;
+            // Use the pre-built demographic weight constants
+            double demographicFactor = DEMOGRAPHIC_WEIGHT_SOURCE + DEMOGRAPHIC_WEIGHT_TARGET;
+            
+            // Composite weight formula
+            return distance +
+                   (0.2 * populationDensitySource) + (0.2 * populationDensityTarget) +
+                   (0.2 * economicWealthSource) + (0.2 * economicWealthTarget) +
+                   (0.2 * tourismPotentialSource) + (0.2 * tourismPotentialTarget) +
+                   demographicFactor;
         }
+           //----------------------------------------------------------------------
 
         public String getEdgeLabel() {
             return String.format("%.2f", getCompositeWeight());
