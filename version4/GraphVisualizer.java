@@ -67,9 +67,29 @@ public class GraphVisualizer {
         public Double getDistance() { return distance; }
 
        //----------------------------------------------------------------------
+    //    Composite demographic scoring can use a formula like:
+    //    DemoScore  = ( 0.4 × Urbanization )+ (   0.3   ×  Literacy  ) + ( 0.3 ×Working Age Percent)
+    //     DemoScore=(0.4×Urbanization)+(0.3×Literacy)+(0.3×Working Age Percent)
 
+
+    //     double urbanization = (populationDensitySource + populationDensityTarget) / 2;
+    //     double workingAgePercent = (economicWealthSource + economicWealthTarget) / 2;
+    //     double literacyRate = (tourismPotentialSource + tourismPotentialTarget) / 2;
+    
+    //    
+    //     urbanization = Math.min(urbanization / 100.0, 1.0); // Percentage normalization
+    //     workingAgePercent = Math.min(workingAgePercent / 100.0, 1.0);
+    //     literacyRate = Math.min(literacyRate / 100.0, 1.0);
+    
+    //     double demographicScore = (0.4 * urbanization) + (0.3 * workingAgePercent) + (0.3 * literacyRate);
+    
+  //----------------------------------------------------------------------
+
+
+       
         public Double getCompositeWeight() {
             // Use the pre-built demographic weight constants
+            //for genralized calculations 
             double demographicFactor = DEMOGRAPHIC_WEIGHT_SOURCE + DEMOGRAPHIC_WEIGHT_TARGET;
             
             // Composite weight formula
