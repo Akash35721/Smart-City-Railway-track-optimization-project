@@ -6,7 +6,7 @@ import java.util.*;
 import java.util.List;
 
 public class GraphVisualizer {
-    private List<Node> nodes;
+    private List<Node> nodes;    
     private List<Edge> edges;
     private List<Edge> optimizedEdges;
     private JFrame appFrame, fileSelectionFrame, originalGraphFrame, optimizedGraphFrame;
